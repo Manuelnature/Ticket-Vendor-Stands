@@ -2,7 +2,7 @@
 @section('content')
 <nav class="navbar bg-dark">
     <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text">  {{ $organizer_name }}</h2>
+        <h2 class="navbar-text text-white" id="nav_text">  {{ Str::upper($organizer_name) }}</h2>
       {{-- <span class="navbar-text text-white">
 
       </span> --}}
@@ -12,7 +12,7 @@
     <div class="container" style="margin-top: 5rem !important">
         <div class="row mb-5">
             <div class="col-md-12">
-                <h2 class="text-center mb-4">{{ Str::upper($vending_point_details->name) }}</h2>
+                <h2 class="text-center mb-2">{{ Str::upper($vending_point_details->name) }}</h2>
                 <h4 class="text-center mb-4">{{ Str::upper($events_details->name) }}</h4>
 
                 @if($all_tickets_info != NULL || $all_tickets_info != "")
@@ -72,16 +72,19 @@
                                 <div class="card-body">
                                     <h5 class="card-title mb-4">{{ Str::upper($tickets['type']) }}</h5>
                                     <p class="card-text text-muted mb-4">Tickets Sold: {{ $tickets['total_quantity'] }}<span><span></p>
-                                    <p class="card-text text-muted">Total Amount: {{ $tickets['total_amount'] }}<span><span></p>
-
-                                    @php
-                                        foreach (json_decode($events_details->tickets, true) as $event_ticket){
-                                            if ($event_ticket['type'] == $tickets['type']) {
-                                                $quantity_left = $event_ticket['quantity'] - $tickets['total_quantity'];
-                                                echo 'Quantity Left = '.$quantity_left ;
+                                    <p class="card-text text-muted">
+                                        @php
+                                            foreach (json_decode($events_details->tickets, true) as $event_ticket){
+                                                if ($event_ticket['type'] == $tickets['type']) {
+                                                    $quantity_left = $event_ticket['quantity'] - $tickets['total_quantity'];
+                                                    echo 'Tickets Left: '.$quantity_left ;
+                                                }
                                             }
-                                        }
-                                    @endphp
+                                        @endphp
+                                    </p> <br>
+                                    <p class="card-text text-muted">Expected Amount: GH¢ {{ number_format($tickets['total_amount'], 2) }}
+                                    </p>
+
                                 </div>
 
                             </div>
@@ -126,10 +129,10 @@
                             @foreach (json_decode($all_tickets_info, true) as $tickets)
                             <tr>
                                 {{-- <th scope="row">1</th> --}}
-                                <td>{{ $events_details->name }}</td>
+                                <td>{{ Str::upper($events_details->name) }}</td>
                                 <td>{{ Str::upper($tickets['type']) }}</td>
                                 <td>{{ $tickets['total_quantity']  }}</td>
-                                <td>{{ $tickets['total_amount'] }}</td>
+                                <td>GH¢ {{ number_format($tickets['total_amount'], 2) }}</td>
                             </tr>
                         @endforeach
                         </tbody>

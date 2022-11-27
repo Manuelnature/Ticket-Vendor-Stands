@@ -2,7 +2,7 @@
 @section('content')
 <nav class="navbar bg-dark">
     <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text"> {{ $organizer_name }}</h2>
+        <h2 class="navbar-text text-white" id="nav_text"> {{ Str::upper($organizer_name) }}</h2>
         <a href="{{route('logout')}}">logout</a>
       {{-- <span class="navbar-text text-white">
 
@@ -13,7 +13,7 @@
     <div class="container" style="margin-top: 5rem !important">
         <div class="row mb-5">
             <div class="col-md-12">
-                <h2 class="text-center mb-4">{{ $events_details->name }}</h2>
+                <h2 class="text-center mb-4">{{ Str::upper($events_details->name) }}</h2>
                 {{-- @foreach (json_decode($events_details->tickets, true) as $tickets)
                         <p>Ticket Type = {{ $tickets['type'] }} {{ $tickets['price'] }} {{ $tickets['quantity'] }}</p>
 
@@ -29,8 +29,8 @@
                     <div class="card" id="card">
                         <div class="card-body">
                             <h5 class="card-title mb-4">{{ Str::upper($tickets['type']) }}</h5>
-                            <p class="card-text text-muted mb-4">Price Per Ticket: {{ $tickets['price'] }}<span><span></p>
-                            <p class="card-text text-muted">Total Quantity: {{ $tickets['quantity'] }} <span><span></p>
+                            <p class="card-text text-muted mb-4">Price Per Ticket: GH¢ {{ number_format($tickets['price'], 2) }}<span><span></p>
+                            <p class="card-text text-muted">Total Quantity: {{ $tickets['quantity'] }} <span><span></p><br>
                             <p class="card-text text-muted mb-3">Expected Amount:
                                     @php
                                         $expected_amount  = (double) $tickets['price'] * (double)$tickets['quantity'];
@@ -61,7 +61,7 @@
     </div>
 
     <div class="container" style="margin-top: 5rem !important">
-        <div class="row mb-5">
+        <div class="row mb-3">
             <div class="col-md-12">
                 <h2 class="text-center">Vending Points</h2>
             </div>
@@ -84,7 +84,7 @@
             @else
                 <div class="col-md-4 mb-4"></div>
                     <div class="col-md-4 mb-4" >
-                        <h2 class="mb-4" style="color:#000">No vending point assigned yet</h2>
+                        <h4 class="mb-4 text-center" style="color:#000">No vending point assigned yet !</h4>
                     </div>
                 <div class="col-md-4 mb-4"></div>
 

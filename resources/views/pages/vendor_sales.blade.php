@@ -23,7 +23,7 @@
             <div class="col-md-4">
             </div>
             <div class="col-md-4">
-                <h4 class="title text-center" >{{ $get_event->name }}</h4>
+                <h4 class="title text-center" >{{ Str::upper($get_event->name )}}</h4>
             </div>
             <div class="col-md-4">
             </div>
@@ -92,7 +92,7 @@
                         <label for="txt_email" class="form-label" id="label">Email address</label>
                         <input type="email" class="form-control" id="txt_email" aria-describedby="emailHelp" name="txt_email">
                     </div>
-                    <button type="submit" class="btn btn--veeticket" id="submit">Submit</button>
+                    <button type="submit" class="btn btn--veeticket" id="submit">Continue</button>
                 </div>
                 <div class="col-md-4"></div>
             </div>

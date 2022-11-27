@@ -151,7 +151,7 @@
                     </div>
 
                     <div class="mb-4">
-                        <div class="form-group hidden" id="organizer">
+                        <div class="form-group hidden mb-4" id="organizer">
                             <label for="txt_organizer" class="form-label" id="label">Organizer</label>
                             <select class="form-select" aria-label="Default select example" name="txt_organizer" id="txt_organizer">
                                 <option disabled="disabled" selected="selected">Select Organization</option>
@@ -161,7 +161,7 @@
                             </select>
                         </div>
 
-                        <div class="form-group hidden" id="vendor">
+                        <div class="form-group hidden mb-4" id="vendor">
                             <label for="txt_vendor" class="form-label" id="label">Vending Point</label>
                             <select class="form-select" aria-label="Default select example" name="txt_vendor" id="txt_vendor">
                                 <option disabled="disabled" selected="selected">Vending Point</option>
@@ -197,23 +197,49 @@
     function display_role() {
         var role = document.getElementById("txt_role").value;
         console.log(role);
-        var organizer = document.getElementById("txt_organizer");
-        var vendor = document.getElementById("txt_vendor");
+        // var organizer = document.getElementById("txt_organizer");
+        // var vendor = document.getElementById("txt_vendor");
+
+        // var organizer_class = organizer.classList
+        // var vendor_class = vendor.classList
+
+        // if (role == 'Organizer') {
+        //     organizer_class.remove('hidden')
+        //     organizer_class.add('visible')
+        //     vendor_class.remove('visible')
+        //     vendor_class.add('hidden')
+        //     console.log("ORGAAAAAAAAA");
+        // }
+        // else if(role == 'Vendor') {
+        //     vendor_class.remove('hidden')
+        //     vendor_class.add('visible')
+        //     organizer_class.remove('visible')
+        //     organizer_class.add('hidden')
+        //     console.log("Veeeeeeeeee");
+        // }
+        // else {
+        //     vendor_class.add('hidden')
+        //     organizer_class.add('hidden')
+        // }
+
+        var organizer = document.getElementById("organizer");
+        var vendor = document.getElementById("vendor");
 
         var organizer_class = organizer.classList
         var vendor_class = vendor.classList
 
+
         if (role == 'Organizer') {
             organizer_class.remove('hidden')
-            organizer_class.add('visible')
-            vendor_class.remove('visible')
+            // organizer_class.add('visible')
+            // vendor_class.remove('visible')
             vendor_class.add('hidden')
             console.log("ORGAAAAAAAAA");
         }
         else if(role == 'Vendor') {
             vendor_class.remove('hidden')
-            vendor_class.add('visible')
-            organizer_class.remove('visible')
+            // vendor_class.add('visible')
+            // organizer_class.remove('visible')
             organizer_class.add('hidden')
             console.log("Veeeeeeeeee");
         }

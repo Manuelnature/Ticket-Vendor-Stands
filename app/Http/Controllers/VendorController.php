@@ -150,21 +150,15 @@ class VendorController extends Controller
                         $t_quantity = $quantity[$i];
                         $original_total_quantity = $ticket_total_quantity[$i];
 
-
-                        // if ($t_quantity > $original_total_quantity) {
-                        //     Alert::warning('Warning!!', $t_type .' Quantity left is less than quantity requested');
-                        //     return redirect()->back();
-                        // }
                         foreach ($event_sales_info as $ticket_sales) {
                             if ($ticket_sales['type'] == $t_type) {
                                 $total_quantity_sold = $ticket_sales['total_quantity'] + $t_quantity;
                                 if (($original_total_quantity - $total_quantity_sold) < 0) {
-                                    Alert::warning('Warning!!', 'Quantity left for '.$t_type.' is less than quantity requested');
+                                    Alert::warning('Warning!!', 'Quantity left for '.Str::upper($t_type).' ticket is less than quantity requested');
                                     return redirect()->back();
                                 }
                             }
                         }
-
 
                         if ($t_type != NULL) {
 
@@ -173,27 +167,6 @@ class VendorController extends Controller
                             $total_amount = $total_amount + $amount;
                             array_push( $all_ticks, ['type' => ucwords($t_type), 'price'=> $t_price, 'quantity'=>$t_quantity, 'amount'=>$amount]);
 
-                            // $total_ticket_quantity_left = $original_total_quantity - $t_quantity;
-
-                            //=============== Updating Events table
-                            // foreach (json_decode($event_tickets, true) as $ticket) {
-                            //     dump('Tickets infooooooo');
-                            //     dump($ticket);
-                            //     if ($ticket['type'] == $t_type) {
-                            //         $ticket['quantity'] =  $total_ticket_quantity_left;
-
-                            //         $getddd = DB::table('tbl_events')
-                            //             ->where('id', $event_id)
-                            //             ->where('tickets->type', $t_type)
-                            //             ->update([
-                            //             'tickets->quantity' => $total_ticket_quantity_left
-                            //         ]);
-                            //         dump('From DBBBB');
-                            //         // dd($getddd);
-                            //     }
-                            //     dump('New Tickets Quantity');
-                            //     dump($ticket['quantity']);
-                            // }
                         }
                     }
                     else{
@@ -205,6 +178,17 @@ class VendorController extends Controller
                         // dump('t_price array '.  $t_price);
                         $t_quantity = $quantity[$i];
                         // dump('t_quantity array '.  $t_quantity);
+                        $original_total_quantity = $ticket_total_quantity[$i];
+
+                        foreach ($event_sales_info as $ticket_sales) {
+                            if ($ticket_sales['type'] == $t_type) {
+                                $total_quantity_sold = $ticket_sales['total_quantity'] + $t_quantity;
+                                if (($original_total_quantity - $total_quantity_sold) < 0) {
+                                    Alert::warning('Warning!!', 'Quantity left for '.Str::upper($t_type).' ticket is less than quantity requested');
+                                    return redirect()->back();
+                                }
+                            }
+                        }
 
                         $amount = (double)$t_price * (double)$t_quantity;
 
@@ -218,6 +202,17 @@ class VendorController extends Controller
                     $t_type = $ticket_type[$i];
                     $t_price = $ticket_price[$i];
                     $t_quantity = $quantity[$i];
+                    $original_total_quantity = $ticket_total_quantity[$i];
+
+                    foreach ($event_sales_info as $ticket_sales) {
+                        if ($ticket_sales['type'] == $t_type) {
+                            $total_quantity_sold = $ticket_sales['total_quantity'] + $t_quantity;
+                            if (($original_total_quantity - $total_quantity_sold) < 0) {
+                                Alert::warning('Warning!!', 'Quantity left for '.Str::upper($t_type).' ticket is less than quantity requested');
+                                return redirect()->back();
+                            }
+                        }
+                    }
 
                     $amount = (double)$t_price * (double)$t_quantity;
 

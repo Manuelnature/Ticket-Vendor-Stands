@@ -9,10 +9,12 @@
 
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text"> {{ $organizer_name }}</h2>
-        {{-- <h2 class="navbar-text text-white" id="nav_text"> {{ $user_id  }}</h2>
-        <h2 class="navbar-text text-white" id="nav_text"> {{ $organizer_id }}</h2> --}}
-        <a href="{{route('logout')}}">logout</a>
+        <div class="nav_inner">
+            <h2 class="navbar-text text-white"> {{ Str::upper($organizer_name) }}</h2>
+            <a class="logout" href="{{route('logout')}}">logout</a>
+        </div>
+        {{-- <h2 class="navbar-text text-white" id="nav_text"> {{ $organizer_name }}</h2>
+        <a href="{{route('logout')}}">logout</a> --}}
       <span class="navbar-text text-white">
 
 
@@ -41,9 +43,9 @@
             @foreach ($my_events as $events)
                 <div class="col-md-3 mb-4" id="card_div">
                     <a href="{{ url('organizer_details', $events->id ) }}" id="card_link">
-                        <div class="card" id="card">
+                        <div class="card" id="event_card">
                             <div class="card-body">
-                                <h5 class="card-title mb-4">{{ $events->name}}</h5>
+                                <h5 class="card-title mb-4">{{ Str::upper($events->name)}}</h5>
                                 {{-- <p class="card-text text-muted">Tickets Sold: <span><span></p> --}}
                             </div>
                         </div>

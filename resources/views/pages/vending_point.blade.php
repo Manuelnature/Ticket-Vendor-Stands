@@ -73,10 +73,10 @@
         <div class="row mb-4">
             <div class="col-md-12">
                 <h2 class="text-center mb-5">All Vending Points</h2>
-                <table class="table table-striped">
+                <table id="table1" class="table table-striped" style="width:100%">
                     <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        {{-- <th scope="col">#</th> --}}
                         <th scope="col">Name</th>
                         <th scope="col">Location</th>
                         <th scope="col">Action</th>
@@ -85,7 +85,7 @@
                     <tbody>
                         @foreach ($all_vending_point as $vending_point)
                             <tr>
-                                <th scope="row">{{ $vending_point->id }}</th>
+                                {{-- <th scope="row">{{ $vending_point->id }}</th> --}}
                                 <td>{{ $vending_point->name }}</td>
                                 <td>{{ $vending_point->location }}</td>
                                 <td> <a href="{{ url('assign_event', $vending_point->id) }}" class="text-success">Assign Event</a> </td>
@@ -98,5 +98,16 @@
     </div>
 
 
+    <script>
+        $(document).ready(function () {
+            $('#table1').DataTable({
+            "responsive": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "scrollX": true,
+            });
+        });
+    </script>
 
 @endsection
