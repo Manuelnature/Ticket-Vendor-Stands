@@ -488,7 +488,8 @@ input {
 #card {
     width: 18rem;
     height: 12rem;
-    background-color: #4F2B74;
+    /* background-color: #4F2B74; */
+    background-color: #301934;
     color: #fff;
     /* align-items: center; */
 }
@@ -496,7 +497,8 @@ input {
 #event_card {
     width: 18rem;
     height: 9rem;
-    background-color: #4F2B74;
+    /* background-color: #4F2B74; */
+    background-color: #301934;
     color: #fff;
     /* align-items: center; */
 }

@@ -1,15 +1,42 @@
-@extends('layouts.main')
+@extends('layouts.admin_layout')
 @section('content')
-<nav class="navbar bg-dark">
-    <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text"> ASSIGN AN EVENT {{ Str::upper($vending_point_details->name) }}</h2>
-      {{-- <span class="navbar-text text-white">
 
-      </span> --}}
+
+{{-- <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-dark" id="headerNav">
+    <div class="container-fluid">
+      <a class="navbar-brand d-block d-lg-none" href="#">
+        <h2 class="navbar-text text-white"> {{ Str::upper($vending_point_details->name) }}</h2>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto ">
+          <li class="nav-item d-none d-lg-block">
+            <a class="nav-link mx-2" href="#">
+              <h2 class="navbar-text text-white"> {{ Str::upper($vending_point_details->name) }}</h2>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 mt-4" href="{{route('logout')}}">logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
-</nav>
+</nav> --}}
 
     <div class="container" style="margin-top: 5rem !important">
+        <div class="row">
+            <div class="col-md-4">
+            </div>
+            <div class="col-md-4">
+                <h2 class="title text-center">{{ Str::upper($vending_point_details->name) }}</h2>
+            </div>
+            <div class="col-md-4">
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-4">
             </div>
@@ -20,7 +47,8 @@
             </div>
         </div>
 
-        <form method="post" action="{{ route('assign_new_event') }}">
+        {{-- <form method="post" action="{{ route('assign_new_event') }}"> --}}
+        <form method="post" action="https://virtualsolutionsgh.com/ticket_vendor/assign_new_event">
             @csrf
             <div class="row mb-3">
                 <div class="col-md-3"></div>
@@ -43,9 +71,9 @@
 
             <div class="row mb-4">
                 <div class="col-md-3"></div>
-                <div class="col-md-3"></div>
-                <div class="col-md-3">
-                    <button type="submit" class="btn btn--veeticket btn-block" id="submit">Add</button>
+                {{-- <div class="col-md-3"></div> --}}
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn--veeticket btn-block" id="submit">Continue</button>
                 </div>
                 <div class="col-md-3">
                 </div>

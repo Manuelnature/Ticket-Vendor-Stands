@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('layouts.admin_layout')
 @section('content')
 
 {{-- <div class="page-wrapper p-t-100 p-b-100 font-robo">
@@ -132,7 +132,8 @@
         <div class="card card-1">
             <div class="card-body">
                 <h2 class="title">Register User</h2>
-                <form method="POST" action="{{ route('register_user') }}">
+                {{-- <form method="POST" action="{{ route('register_user') }}"> --}}
+                <form method="POST" action="https://virtualsolutionsgh.com/ticket_vendor/register_user">
                     @csrf
                     <div class="form-group mb-3">
                         <label for="txt_username" class="form-label" id="label">Username</label>
@@ -144,6 +145,7 @@
                         <label for="txt_role" class="form-label" id="label">User Role</label>
                         <select class="form-select" aria-label="Default select example" name="txt_role" id="txt_role" onchange="display_role()">
                             <option disabled="disabled" selected="selected">Register as</option>
+                            <option value="Admin">Admin</option>
                             <option value="Organizer">Organizer</option>
                             <option value="Vendor">Vendor</option>
                         </select>

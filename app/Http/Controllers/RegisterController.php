@@ -9,13 +9,26 @@ use App\Models\User;
 use App\Models\Organizer;
 use App\Models\VendingPoint;
 use Illuminate\Support\Facades\Hash;
+use Session;
 
 class RegisterController extends Controller
 {
     public function index(){
         $all_organizers = Organizer::all();
         $all_vending_points = VendingPoint::all();
-        return view('pages.register', compact('all_organizers', 'all_vending_points'));
+
+        $user_session = Session::get('user_session');
+        $user_id = $user_session->id;
+        $organizer_id = $user_session->organizer_id;
+
+        if ($organizer_id != NULL || $organizer_id != "") {
+            $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
+            $organizer_name = $get_organizer->name;
+        }
+        else{
+            $organizer_name = "";
+        }
+        return view('pages.register', compact('all_organizers', 'all_vending_points', 'organizer_name'));
     }
 
     public function register(Request $request){

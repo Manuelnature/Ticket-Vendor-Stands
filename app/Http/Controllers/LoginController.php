@@ -41,6 +41,9 @@ class LoginController extends Controller
                         if ($user_session->role == 'Organizer') {
                             return redirect('organizer');
                         }
+                        elseif ($user_session->role == 'Admin'){
+                            return redirect('admin');
+                        }
                         elseif ($user_session->role == 'Vendor'){
                             return redirect('vendor_page');
                         }

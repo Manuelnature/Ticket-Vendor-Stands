@@ -5,21 +5,49 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 use App\Models\Event;
+use App\Models\Organizer;
 use App\Models\VendingPoint;
+use Session;
 
 class EventController extends Controller
 {
     public function index(){
 
-        // $organizer_id = $id;
-        return view('pages.add_event');
+        $user_session = Session::get('user_session');
+        $user_id = $user_session->id;
+        $organizer_id = $user_session->organizer_id;
+
+        if ($organizer_id != NULL || $organizer_id != "") {
+            $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
+            $organizer_name = $get_organizer->name;
+        }
+        else{
+            $organizer_name = "";
+        }
+
+        return view('pages.add_event', compact('organizer_name'));
     }
 
     public function assign_event($vending_point_id){
         $all_events = Event::all();
 
+
         $vending_point_details = VendingPoint::where('id', $vending_point_id)->get()[0];
-        return view('pages.assign_event', compact('all_events', 'vending_point_details'));
+
+
+        $user_session = Session::get('user_session');
+        $user_id = $user_session->id;
+        $organizer_id = $user_session->organizer_id;
+
+        if ($organizer_id != NULL || $organizer_id != "") {
+            $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
+            $organizer_name = $get_organizer->name;
+        }
+        else{
+            $organizer_name = "";
+        }
+
+        return view('pages.assign_event', compact('all_events', 'vending_point_details', 'organizer_name'));
     }
 
 
@@ -123,7 +151,8 @@ class EventController extends Controller
             $add_event->save();
 
             Alert::toast('New event added successfully','success');
-            return redirect('organizer');
+            // return redirect('organizer');
+            return redirect()->back();
         }
         catch (exception $e) {
                 echo 'Caught exception';

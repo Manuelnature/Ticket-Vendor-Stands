@@ -68,8 +68,16 @@ class VendorController extends Controller
         $user_session = Session::get('user_session');
         $user_id = $user_session->id;
         $organizer_id = $user_session->organizer_id;
-        $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
-        $organizer_name = $get_organizer->name;
+
+        if ($organizer_id != NULL || $organizer_id != "") {
+            $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
+            $organizer_name = $get_organizer->name;
+        }
+        else{
+            $organizer_name = "";
+        }
+        // $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
+        // $organizer_name = $get_organizer->name;
 
         $all_users = User::all();
         $all_vending_point = VendingPoint::all();

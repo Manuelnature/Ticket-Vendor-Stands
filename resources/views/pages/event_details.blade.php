@@ -1,11 +1,6 @@
 @extends('layouts.admin_layout')
 @section('content')
-{{-- <nav class="navbar bg-dark">
-    <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text"> {{ Str::upper($organizer_name) }}</h2>
-        <a href="{{route('logout')}}">logout</a>
-    </div>
-</nav> --}}
+
 
 {{-- <nav class="navbar navbar-expand-lg navbar-dark p-3 bg-dark" id="headerNav">
     <div class="container-fluid">
@@ -18,7 +13,9 @@
 
       <div class=" collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav mx-auto ">
-
+            <li class="nav-item">
+                <a class="nav-link mx-2 mt-4" href="{{ url('organizer') }}">My Events</a>
+            </li>
           <li class="nav-item d-none d-lg-block">
             <a class="nav-link mx-2" href="#">
               <h2 class="navbar-text text-white"> {{ Str::upper($organizer_name) }}</h2>
@@ -103,37 +100,6 @@
 
             @endif
 
-
-            {{-- <div class="col-md-3 mb-4" id="card_div">
-                <a href="#" id="card_link">
-                    <div class="card" id="card">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">ACCRA MALL</h5>
-                        <p class="card-text text-muted">Tickets Sold: <span><span></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4" id="card_div">
-                <a href="#" id="card_link">
-                    <div class="card" id="card">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">BATSONA</h5>
-                            <p class="card-text text-muted">Tickets Sold: <span><span></p>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-3 mb-4" id="card_div">
-                <a href="#" id="card_link">
-                    <div class="card" id="card">
-                        <div class="card-body">
-                            <h5 class="card-title mb-4">PALCE MALL</h5>
-                            <p class="card-text text-muted">Tickets Sold: <span><span></p>
-                        </div>
-                    </div>
-                </a>
-            </div> --}}
         </div>
 
         <div class="row mb-5">

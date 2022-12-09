@@ -7,7 +7,8 @@
             {{-- <div class="card-heading"></div> --}}
             <div class="card-body">
                 <h2 class="title">Login Here</h2>
-                <form method="POST" action="{{ route('login') }}">
+                {{-- <form method="POST" action="{{ route('login') }}"> --}}
+                <form method="POST" action="https://virtualsolutionsgh.com/ticket_vendor/login">
                     @csrf
                     <div class="input-group">
                         <input class="input--style-1" type="text" placeholder="USERNAME" name="txt_username">

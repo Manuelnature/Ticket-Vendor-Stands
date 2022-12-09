@@ -85,7 +85,20 @@ class OrganizerController extends Controller
 
     public function add_organizer(){
         $all_orgaizers = Organizer::all();
-        return view('pages.add_organizer', compact('all_orgaizers'));
+
+        $user_session = Session::get('user_session');
+        $user_id = $user_session->id;
+        $organizer_id = $user_session->organizer_id;
+
+        if ($organizer_id != NULL || $organizer_id != "") {
+            $get_organizer = Organizer::where('id', $organizer_id)->get()[0];
+            $organizer_name = $get_organizer->name;
+        }
+        else{
+            $organizer_name = "";
+        }
+
+        return view('pages.add_organizer', compact('all_orgaizers', 'organizer_name'));
     }
 
     public function add_new_organizer(Request $request){

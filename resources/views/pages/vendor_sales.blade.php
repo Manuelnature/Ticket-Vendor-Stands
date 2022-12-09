@@ -7,14 +7,34 @@
     $vending_point_id = $user_session_details->vending_point_id;
 @endphp
 
-<nav class="navbar bg-dark">
+{{-- <nav class="navbar bg-dark">
     <div class="container-fluid">
         <h2 class="navbar-text text-white" id="nav_text"> {{  Str::upper($vending_point_name) }}</h2>
         <a href="{{route('logout')}}">logout</a>
-        {{-- <h2 class="navbar-text text-white" id="nav_text"> {{ $get_event->id }}</h2> --}}
-      {{-- <span class="navbar-text text-white">
+    </div>
+</nav> --}}
 
-      </span> --}}
+<nav class="navbar navbar-expand-lg navbar-dark p-3 bg-dark" id="headerNav">
+    <div class="container-fluid">
+      <a class="navbar-brand d-block d-lg-none" href="#">
+        <h5 class="navbar-text text-white"> {{ Str::upper($vending_point_name) }}</h5>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto ">
+          <li class="nav-item d-none d-lg-block">
+            <a class="nav-link mx-2" href="#">
+              <h5 class="navbar-text text-white mt-3"> {{ Str::upper($vending_point_name) }}</h5>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 mt-4" href="{{route('logout')}}">logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
 </nav>
 
@@ -29,7 +49,8 @@
             </div>
         </div>
 
-        <form method="post" action="{{ route('add_sales') }}">
+        {{-- <form method="post" action="{{ route('add_sales') }}"> --}}
+        <form method="post" action="https://virtualsolutionsgh.com/ticket_vendor/add_sales">
             @csrf
             <div class="row mb-4">
                 <input type="hidden" id="event_id" name="event_id" value="{{ $get_event->id }}">

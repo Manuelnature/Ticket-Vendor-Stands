@@ -1,22 +1,15 @@
-@extends('layouts.main')
+@extends('layouts.admin_layout')
 @section('content')
-<nav class="navbar bg-dark">
-    <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text">  {{ Str::upper($organizer_name) }}</h2>
-      {{-- <span class="navbar-text text-white">
 
-      </span> --}}
-    </div>
-  </nav>
 
-    <div class="container" style="margin-top: 5rem !important">
+    <div class="container" style="margin-top: 2rem !important">
         <div class="row mb-5">
             <div class="col-md-12">
                 <h2 class="text-center mb-2">{{ Str::upper($vending_point_details->name) }}</h2>
                 <h4 class="text-center mb-4">{{ Str::upper($events_details->name) }}</h4>
 
                 @if($all_tickets_info != NULL || $all_tickets_info != "")
-                    <h4 class="text-center">Total Tickets Sold:
+                    <h4 class="text-center">Total Number of Tickets Sold:
                         @php
                             $total_sold = 0;
                             // $total_amount = 0;
@@ -28,7 +21,7 @@
                         @endphp
                     </h4>
 
-                    <h4 class="text-center">Total Amount:
+                    <h4 class="text-center mt-4">Total Amount:
                         @php
                             // $total_sold = 0;
                             $total_amount = 0;

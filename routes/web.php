@@ -9,6 +9,7 @@ use App\Http\Controllers\TicketController;
 use App\Http\Controllers\OrganizerController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\VendingPointController;
+use App\Http\Controllers\AdminController;
 
 
 Route::group(['middleware' => 'disable_back_button'], function () {
@@ -51,6 +52,9 @@ Route::group(['middleware' => 'disable_back_button'], function () {
         Route::get('vending_point_details/{vending_point_id}/{event_id}', [VendingPointController::class, 'vending_point_details']);
 
         Route::post('subscribe', [HomeController::class, 'subscribe'])->name('subscribe');
+
+        Route::get('admin', [AdminController::class, 'index']);
+        Route::get('event_details/{event_id}', [AdminController::class, 'event_details']);
 
         // LOGOUT ======================
         Route::get('logout', [LoginController::class, 'logout'])->name('logout');

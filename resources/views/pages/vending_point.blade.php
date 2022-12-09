@@ -1,13 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.admin_layout')
 @section('content')
-<nav class="navbar bg-dark">
-    <div class="container-fluid">
-        <h2 class="navbar-text text-white" id="nav_text">  {{ $organizer_name }}</h2>
-      {{-- <span class="navbar-text text-white">
 
-      </span> --}}
-    </div>
-</nav>
 
     <div class="container" style="margin-top: 5rem !important">
         <div class="row">

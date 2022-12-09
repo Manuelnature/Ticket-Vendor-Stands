@@ -6,13 +6,34 @@
     $organizer_id = $user_session_details->organizer_id;
 @endphp
 
-<nav class="navbar bg-dark">
+{{-- <nav class="navbar bg-dark">
     <div class="container-fluid">
         <h2 class="navbar-text text-white" id="nav_text"> {{  Str::upper($vending_point_name) }}</h2>
         <a href="{{route('logout')}}">logout</a>
-      {{-- <span class="navbar-text text-white">
+    </div>
+</nav> --}}
 
-      </span> --}}
+<nav class="navbar navbar-expand-lg navbar-dark p-3 bg-dark" id="headerNav">
+    <div class="container-fluid">
+      <a class="navbar-brand d-block d-lg-none" href="#">
+        <h6 class="navbar-text text-white"> {{ Str::upper($vending_point_name) }}</h6>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav mx-auto ">
+          <li class="nav-item d-none d-lg-block">
+            <a class="nav-link mx-2" href="#">
+              <h2 class="navbar-text text-white"> {{ Str::upper($vending_point_name) }}</h2>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link mx-2 mt-4" href="{{route('logout')}}">logout</a>
+          </li>
+        </ul>
+      </div>
     </div>
 </nav>
 
